@@ -1,5 +1,7 @@
-Django
-djangorestframework
-django-cors-headers
-djangorestframework-simplejwt
-psycopg[binary]
+Django>=5.2,<5.3
+django-cors-headers>=4.9,<5.0
+djangorestframework>=3.16,<4.0
+psycopg[binary]>=3.2,<4.0
+
+
+#LeafPulse@2026
