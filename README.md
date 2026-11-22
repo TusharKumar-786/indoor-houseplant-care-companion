@@ -2,6 +2,10 @@
 
 > An intelligent, botanical-first indoor plant care companion built with React 18, Node.js, Express, PostgreSQL, and Google Gemini AI.
 
+### 🌐 Live Demo: [indoor-houseplant-care-companion.vercel.app](https://indoor-houseplant-care-companion.vercel.app)
+
+> Note: the backend runs on a free Render instance, so the very first request after a period of inactivity can take 30–60 seconds to wake up.
+
 ---
 
 ## 📸 Screenshots
@@ -36,6 +40,7 @@
 - **Media Hosting:** Cloudinary (Permanent cloud storage for uploaded plant photos)
 - **Email:** Resend (Transactional password reset emails)
 - **Validation & Security:** Zod schemas, Helmet, express-rate-limit, CORS origin protection, bcryptjs, JWT
+- **Hosting:** Vercel (frontend), Render (backend), Supabase (database)
 
 ---
 
@@ -84,8 +89,8 @@ LeafPulse/
 
 ### 2. Clone and Install Dependencies
 ```bash
-git clone https://github.com/your-username/LeafPulse.git
-cd LeafPulse
+git clone https://github.com/TusharKumar-786/indoor-houseplant-care-companion.git
+cd indoor-houseplant-care-companion
 
 # Install backend dependencies
 cd server
@@ -199,4 +204,5 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
 - **License:** MIT License. Built for plant keepers everywhere.
 - **Author:** Tushar Kumar
+- **Live Site:** [indoor-houseplant-care-companion.vercel.app](https://indoor-houseplant-care-companion.vercel.app)
 - **Security:** Please never commit real credentials or API keys. Follow instructions in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) to set secure secrets in production environments.
