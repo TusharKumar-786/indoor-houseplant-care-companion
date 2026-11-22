@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── LeafPulse Design Tokens ─────────────────────────────────────────── */
+:root {
+  --color-deep-moss:   #1F3D2B;
+  --color-fern:        #3E7B52;
+  --color-sage-mist:   #C9D8C5;
+  --color-oat-cream:   #F5F1E6;
+  --color-terracotta:  #C8693F;
+  --color-bark:        #3B2F2A;
+  --color-pale-lime:   #E4EDB8;
+
+  /* Backward compatibility variables mapped to new palette */
+  --color-forest:      #1F3D2B;
+  --color-forest-dark: #14291D;
+  --color-forest-light:#3E7B52;
+  --color-sage:        #C9D8C5;
+  --color-sage-light:  #E2EBE0;
+  --color-cream:       #F5F1E6;
+  --color-cream-dark:  #ECE5D4;
+  --color-mint:        #E4EDB8;
+  --color-mint-light:  #F0F6D5;
+  --color-amber:       #C8693F;
+  --color-amber-light: #FCFAF6;
+  --color-coral:       #C8693F;
+  --color-coral-light: #FCFAF6;
+  --color-text-base:   #3B2F2A;
+  --color-text-muted:  #736159;
+  --color-border:      #D8E0D5;
+}
+
+/* ─── Base Styles ──────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-oat-cream);
+    color: var(--color-bark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-deep-moss);
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+}
+
+/* ─── Custom Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage-mist);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B3C6AF;
+}
+
+/* ─── Two Core Button Styles + Inputs & Cards ─────────────────────────── */
+@layer components {
+  /* 1. Primary Button: Deep Moss solid, purposeful hover motion */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl
+           bg-[#1F3D2B] hover:bg-[#14291D] active:translate-y-0.5 text-white font-medium text-sm
+           shadow-sm transition-all duration-150 focus:outline-none focus:ring-2
+           focus:ring-[#1F3D2B]/40 focus:ring-offset-2 focus:ring-offset-[#F5F1E6];
+  }
+
+  /* 2. Quiet Button: Gentle neutral border, Oat Cream bg, calm hover */
+  .btn-quiet,
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl
+           bg-[#F5F1E6] hover:bg-[#ECE5D4] active:translate-y-0.5 text-[#1F3D2B] font-medium text-sm
+           border border-[#C9D8C5] transition-all duration-150 focus:outline-none
+           focus:ring-2 focus:ring-[#1F3D2B]/30 focus:ring-offset-2 focus:ring-offset-[#F5F1E6];
+  }
+
+  /* Terracotta Accent Button: for key attention / due today actions */
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl
+           bg-[#C8693F] hover:bg-[#A65330] active:translate-y-0.5 text-white font-medium text-sm
+           shadow-sm transition-all duration-150 focus:outline-none focus:ring-2
+           focus:ring-[#C8693F]/40 focus:ring-offset-2 focus:ring-offset-[#F5F1E6];
+  }
+
+  /* Form input / select */
+  .input-botanical {
+    @apply w-full px-4 py-2.5 text-sm rounded-xl
+           border border-[#C9D8C5] bg-white text-[#3B2F2A]
+           placeholder-[#736159]/60
+           focus:outline-none focus:ring-2 focus:ring-[#1F3D2B]/20 focus:border-[#1F3D2B]
+           transition-all duration-150;
+  }
+
+  /* Base Card */
+  .card {
+    @apply bg-white rounded-2xl border border-[#C9D8C5]/70 shadow-soft transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply hover:shadow-card hover:-translate-y-0.5;
+  }
+
+  /* Section heading */
+  .section-title {
+    @apply text-lg font-semibold text-[#1F3D2B] font-serif tracking-tight;
+  }
+
+  /* Line badge tokens */
+  .badge-lime,
+  .badge-mint {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold
+           bg-[#E4EDB8] text-[#1F3D2B];
+  }
+  .badge-sage {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold
+           bg-[#E2EBE0] text-[#1F3D2B];
+  }
+  .badge-terracotta,
+  .badge-amber,
+  .badge-coral {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold
+           bg-[#FBECE6] text-[#C8693F];
+  }
+}
+
+/* ─── Page animation ───────────────────────────────────────────────────── */
+.animate-in {
+  animation: fadeSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Skeleton loader ──────────────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, #ECE5D4 25%, #F5F1E6 50%, #ECE5D4 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  border-radius: 0.5rem;
+}
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  server-test:
+    name: Server — TypeScript + Tests
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: leafpulse_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/leafpulse_test
+      JWT_SECRET: ci-test-secret-key-at-least-32-chars-long
+      NODE_ENV: test
+      AI_ENABLED: 'false'
+      PORT: '3001'
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+      - run: npm ci
+      - name: TypeScript check
+        run: npx tsc -p tsconfig.build.json --noEmit
+      - name: Run tests
+        run: npm test
+
+  client-build:
+    name: Client — TypeScript + Build
+    runs-on: ubuntu-latest
+    env:
+      VITE_API_URL: https://api.example.com
+    defaults:
+      run:
+        working-directory: client
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+      - run: npm ci
+      - name: TypeScript check
+        run: npx tsc --noEmit
+      - name: Build
+        run: npm run build
