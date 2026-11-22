@@ -2,7 +2,7 @@
 
 > An intelligent, botanical-first indoor plant care companion built with React 18, Node.js, Express, PostgreSQL, and Google Gemini AI.
 
-### 🌐 Live Demo: [indoor-houseplant-care-companion.vercel.app](https://indoor-houseplant-care-companion.vercel.app)
+### 🌐 Live Demo: [indoor-houseplant-care-companion.vercel.app](https://leafpulse-care.vercel.app/)
 
 > Note: the backend runs on a free Render instance, so the very first request after a period of inactivity can take 30–60 seconds to wake up.
 
@@ -204,5 +204,5 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
 - **License:** MIT License. Built for plant keepers everywhere.
 - **Author:** Tushar Kumar
-- **Live Site:** [indoor-houseplant-care-companion.vercel.app](https://indoor-houseplant-care-companion.vercel.app)
+- **Live Site:** [indoor-houseplant-care-companion.vercel.app](https://leafpulse-care.vercel.app/)
 - **Security:** Please never commit real credentials or API keys. Follow instructions in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) to set secure secrets in production environments.
